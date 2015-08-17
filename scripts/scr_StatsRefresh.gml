@@ -1,0 +1,10 @@
+hp = health_points +        (bonus_hp + sqrt(mastery * bonus_hp))                                       * pts_hp + add_hp;
+mp = mana_points +          (bonus_mp + sqrt(mastery * bonus_mp))                                       * pts_hp + add_mp;
+ms = movement_speed +       ((bonus_ms * bonus_ms) / (mastery) * stats_points_max * sqrt(mastery))      * pts_hp + add_ms;
+mr = mana_regeneration +    ((bonus_mr * bonus_mr) / (mastery) * stats_points_max * sqrt(mastery))      * pts_hp + add_mr;
+hr = health_regeneration +  ((bonus_hr * bonus_hr) / (mastery) * stats_points_max * sqrt(mastery))      * pts_hp + add_hr;
+sd = spell_damage +         (sqrt(sqrt(cur_level * bonus_cnt)) / stats_points_max)                      * pts_hp + add_sd;
+ac = avoid_chance +         ((bonus_ac * bonus_ac) / (mastery) * stats_points_max * sqrt(mastery))      * pts_hp + add_ac;
+crit = critical_damage +    ((bonus_crit * bonus_crit) / (mastery) * stats_points_max * sqrt(mastery))  * pts_hp + add_crit;
+cd = cooldown -             ((bonus_cd * bonus_cd) / (mastery) * stats_points_max * sqrt(mastery))      * pts_hp + add_cd;
+dur = control_duration +    ((bonus_dur * bonus_dur) / (mastery) * stats_points_max * sqrt(mastery))    * pts_hp + add_dur;
