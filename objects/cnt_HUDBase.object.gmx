@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,8 +27,10 @@
             <kind>1</kind>
             <string>/// Activate HUD elements
 
-instance_create(0, 0, cnt_Elements);
+instance_create(0, 0, cnt_HealthIndicator);
 instance_create(0, 0, cnt_Skills);
+instance_create(0, 0, cnt_Elements);
+
 </string>
           </argument>
         </arguments>
@@ -53,10 +55,10 @@ instance_create(0, 0, cnt_Skills);
             <kind>1</kind>
             <string>///Draw HUD
 draw_sprite_ext(spr_HUDBase, 0, 
-            (window_get_width() - cnt_GameState.original_wview * global.scale)/2, 
-            window_get_height() - cnt_GameState.original_hview * global.scale, 
-            global.scale / 4, 
-            global.scale / 4, 
+            (window_get_width() - cnt_GameState.original_wview * floor(global.scale_gui))/2, 
+            window_get_height() - cnt_GameState.original_hview * floor(global.scale_gui), 
+            floor(global.scale_gui) / 4, 
+            floor(global.scale_gui) / 4, 
             0, c_white, 1);
 //show_debug_message(string(cnt_GameState.scale));                
 //show_debug_message("XVIEW: " + string(view_xview) + " YVIEW: " + string(view_yview + view_hview));

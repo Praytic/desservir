@@ -65,7 +65,7 @@ if (cnt_RoomState.teleporters_activate == true) {
     room_index = ds_grid_get(cnt_RoomState.room_coordinates, cnt_RoomState.room_x, cnt_RoomState.room_y);
     if (room_index == 0) {
         new_room = irandom_range(cnt_RoomState.first_room_id, cnt_RoomState.second_room_id);
-        ds_grid_add(cnt_RoomState.room_coordinates, cnt_RoomState.room_x, cnt_RoomState.room_y, new_room);
+        ds_grid_set(cnt_RoomState.room_coordinates, cnt_RoomState.room_x, cnt_RoomState.room_y, new_room);
     }
     else {
         new_room = room_index;

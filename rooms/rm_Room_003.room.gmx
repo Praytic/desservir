@@ -41,7 +41,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_Hero" xview="0" yview="0" wview="320" hview="240" xport="0" yport="0" wport="1920" hport="1080" hborder="240" vborder="320" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="obj_Hero" xview="0" yview="0" wview="320" hview="240" xport="0" yport="0" wport="1920" hport="1080" hborder="320" vborder="240" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -51,7 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="cnt_TeleporterUp" x="544" y="32" name="inst_64C71F9C" locked="0" code="" scaleX="1" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="cnt_TeleporterUp" x="544" y="64" name="inst_64C71F9C" locked="0" code="" scaleX="1" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="cnt_TeleporterDown" x="544" y="800" name="inst_BB736916" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="cnt_TeleporterRight" x="1096" y="448" name="inst_D819BAF1" locked="0" code="" scaleX="0.75" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="cnt_TeleporterLeft" x="0" y="448" name="inst_FADAE84A" locked="0" code="" scaleX="0.75" scaleY="1" colour="4294967295" rotation="0"/>

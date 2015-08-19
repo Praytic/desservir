@@ -38,6 +38,19 @@ teleporters_activate = true;
 // Player enable to scale the view
 player_scaling_x = 0;
 player_scaling_y = 0;
+player_scaling_count = 0;
+
+// Standart size of the view
+original_wview = 320;
+original_hview = 240; 
+view_hborder[0] = original_wview;
+view_vborder[0] = original_hview;
+
+// Window's previous size and difference
+window_size_prev_width = window_get_width();
+window_size_prev_height = window_get_height();
+window_size_difference_width = 0;
+window_size_difference_height = 0;
 </string>
           </argument>
         </arguments>
@@ -89,47 +102,46 @@ window_set_min_height(480);
             <kind>1</kind>
             <string>///View scaling
 
-//Standart size of the view
-original_wview = 320;
-original_hview = 240;
+//Check if window size changed
+//scr_WindowSizeChanged();
 
 //Scale the view relatively to the window size
-global.scale = min(floor(window_get_width() / original_wview), round(window_get_height() / original_hview));
+global.scale = max(window_get_width() / original_wview, window_get_height() / original_hview);
+global.scale_gui = min(window_get_width() / original_wview, window_get_height() / original_hview);
 global.scale = max(global.scale, 1);
 
 //Set position, height and width of the view
-view_wview[0] = round((window_get_width() / global.scale) / 10) * 10 + player_scaling_x;
-view_hview[0] = round((window_get_height() / global.scale) / 10) * 10 + player_scaling_y;
-view_xview[0] = round((window_get_x() / global.scale) / 10) * 10;
-view_yview[0] = round((window_get_y() / global.scale) / 10) * 10;
+view_wview[0] = round(((window_get_width() + player_scaling_x) / global.scale) / 32) * 32;
+view_hview[0] = round(((window_get_height() + player_scaling_y) / global.scale) / 32) * 32;
+view_xview[0] = round((window_get_x() / global.scale) / 32) * 32;
+view_yview[0] = round((window_get_y() / global.scale) / 32) * 32;
 
 //Moves the view closer
-if(keyboard_check_pressed(vk_pagedown) || mouse_wheel_up()) {
-    player_scaling_x = max(player_scaling_x - 40, 0);
-    player_scaling_y = player_scaling_x / 4 * 3;
-    view_hborder[0] = max(view_hborder[0] - 40, 320);
-    view_vborder[0] = view_hborder[0] / 4 * 3;;
+if(keyboard_check_pressed(vk_pagedown) || mouse_wheel_up() &amp;&amp; 
+    player_scaling_count &gt; 0) {
     
-    show_debug_message(string(player_scaling_x) + " " + string(view_hborder[0]));
+    player_scaling_x -= 64;
+    player_scaling_y -= 48;
+    player_scaling_count--;
+    view_hborder[0] -= 64;
+    view_vborder[0] -= 48;
 }
 //Moves the view further
-if(keyboard_check_pressed(vk_pageup) || mouse_wheel_down()) {
-    player_scaling_x = min(player_scaling_x + 40, room_width - 320);
-    player_scaling_y = player_scaling_x / 4 * 3;
-    view_hborder[0] = min(view_hborder[0] + 40, room_width);
-    view_vborder[0] = view_hborder[0] / 4 * 3;
+if(keyboard_check_pressed(vk_pageup) || mouse_wheel_down() &amp;&amp;
+    player_scaling_count &lt; (room_width - original_wview) / 16 * round(global.scale) / 4) {
     
-    show_debug_message(string(player_scaling_x) + " " + string(view_hborder[0]));
+    player_scaling_x += 64;
+    player_scaling_y += 48;
+    player_scaling_count++;
+    view_hborder[0] += 64;
+    view_vborder[0] += 48;
 }
 //Centralize the window
-if(keyboard_check(vk_tab)) {
-    window_center();
+if(keyboard_check_pressed(vk_tab)) {
+    window_set_fullscreen(!window_get_fullscreen());
 }
 
-player_scaling_x = min(player_scaling_x, room_width - 320);
-player_scaling_y = player_scaling_x / 4 * 3;
-view_hborder[0] = min(view_hborder[0], room_width);
-view_vborder[0] = view_hborder[0] / 4 * 3;
+show_debug_message(string(view_xview[0]) + " " + string(view_yview[0]));
 
 </string>
           </argument>
@@ -165,29 +177,6 @@ if(keyboard_check_pressed(vk_escape)) {
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Room Controller
-
-//current_floor = tile_get_depth(tile);
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="7" enumb="4">
       <action>
@@ -212,6 +201,38 @@ proportion = view_hport[0] / view_wport[0];
 if (display_get_height() &lt; view_hport[0]) {
     view_hport[0] = display_get_height();
     view_wport[0] = view_hport[0] / proportion;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// View resize
+
+view_hborder[0] = player_scaling_x + 320;
+view_vborder[0] = player_scaling_y + 240;
+
+while (player_scaling_count &gt; (room_width - original_wview) / 16 * round(global.scale) / 4) {
+    player_scaling_x -= 64;
+    player_scaling_y -= 48;
+    player_scaling_count--;
+    view_hborder[0] -= 64;
+    view_vborder[0] -= 48;
 }
 </string>
           </argument>

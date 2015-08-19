@@ -217,7 +217,7 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check_pressed(ord("G"))) {
+            <string>if(keyboard_check_pressed(ord("Q"))) {
     show_debug_message("cell: " + string(cell_x) + " " + string(cell_y));
     show_debug_message("-------");
     for(i = 0; i &lt; 5; i++;) {
@@ -229,6 +229,15 @@ else {
     }
     show_debug_message("-------");
     show_debug_message(string(cur_depth) + " " + string(prev_depth));
+}
+
+if(keyboard_check(ord("W"))) {
+    cnt_PlayerBase.cur_hp--;
+    show_debug_message("cur_hp: " + string(cnt_PlayerBase.cur_hp));
+}
+if(keyboard_check(ord("E"))) {
+    cnt_PlayerBase.cur_hp++;
+    show_debug_message("cur_hp: " + string(cnt_PlayerBase.cur_hp));
 }
 </string>
           </argument>

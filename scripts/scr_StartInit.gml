@@ -13,3 +13,10 @@ if(instance_exists(cnt_RoomState)) {
         instance_create(0, 0, cnt_RoomState);
     }
 }
+
+if(instance_exists(cnt_GameState)) {
+    with(cnt_GameState) {
+        instance_destroy();
+        instance_create(0, 0, cnt_GameState);
+    }
+}

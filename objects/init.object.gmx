@@ -31,6 +31,8 @@
 global.gamespeed = 1.0;
 //Scale of objects' images
 global.scale = 4;
+//Scale of GUI elements
+global.scale_gui = 4;
 //Ingame state
 global.ingame = false;
 //Pause state

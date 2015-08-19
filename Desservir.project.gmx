@@ -115,6 +115,9 @@
       <script>scripts\scr_StatsUp.gml</script>
       <script>scripts\scr_SubbendingChoose.gml</script>
     </scripts>
+    <scripts name="System">
+      <script>scripts\scr_WindowSizeChanged.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_Anon</font>
