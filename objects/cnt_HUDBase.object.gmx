@@ -60,8 +60,7 @@ draw_sprite_ext(spr_HUDBase, 0,
             floor(global.scale_gui) / 4, 
             floor(global.scale_gui) / 4, 
             0, c_white, 1);
-//show_debug_message(string(cnt_GameState.scale));                
-//show_debug_message("XVIEW: " + string(view_xview) + " YVIEW: " + string(view_yview + view_hview));
+
 </string>
           </argument>
         </arguments>

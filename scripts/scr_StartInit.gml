@@ -1,4 +1,5 @@
 global.ingame = true;
+global.pause = false;
 
 if(instance_exists(obj_Hero)) {
     with(obj_Hero) {

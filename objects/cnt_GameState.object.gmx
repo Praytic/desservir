@@ -55,6 +55,8 @@ window_size_difference_height = 0;
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -71,19 +73,23 @@ window_size_difference_height = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Game start
-//room_goto_next();
-window_set_size(1280, 960);
-window_set_min_width(640);
-window_set_min_height(480);
-//window_set_position(window_get_width() / 2 - 640, window_get_height() / 2 - 480);
+            <string>///Hotkeys
 
+if(keyboard_check_pressed(vk_escape)) {
+    if(!global.pause) {
+        instance_create(x, y, cnt_MenuBase);
+        instance_deactivate_object(cnt_HUDBase);
+        global.pause = true;
+    }
+    else game_end();
+}
+if(keyboard_check_pressed(vk_tab)) {
+    window_set_fullscreen(!window_get_fullscreen());
+}
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -136,12 +142,6 @@ if(keyboard_check_pressed(vk_pageup) || mouse_wheel_down() &amp;&amp;
     view_hborder[0] += 64;
     view_vborder[0] += 48;
 }
-//Centralize the window
-if(keyboard_check_pressed(vk_tab)) {
-    window_set_fullscreen(!window_get_fullscreen());
-}
-
-show_debug_message(string(view_xview[0]) + " " + string(view_yview[0]));
 
 </string>
           </argument>
@@ -163,15 +163,13 @@ show_debug_message(string(view_xview[0]) + " " + string(view_yview[0]));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Hotkeys
+            <string>///Game Focus
 
-if(keyboard_check_pressed(vk_escape)) {
-    if(!global.pause) {
-        instance_create(x, y, cnt_MenuBase);
-        instance_deactivate_object(cnt_HUDBase);
-        global.pause = true;
-    }
-    else game_end();
+if (!window_has_focus()) {
+    global.pause = true;
+}
+else {
+    global.pause = false;
 }
 </string>
           </argument>

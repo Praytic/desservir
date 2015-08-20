@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -27,16 +27,107 @@
             <kind>1</kind>
             <string>///Global Variables
 
+// Open ini settings and apply them
+ini_open('game_settings.ini');
+if (!ini_section_exists('SETTINGS')) {
+    ini_write_real('SETTINGS', 'game_speed', 1.0);
+    ini_write_real('SETTINGS', 'scale', 4);
+    ini_write_real('SETTINGS', 'scale_gui', 4);
+    ini_write_real('SETTINGS', 'window_width', 1280);
+    ini_write_real('SETTINGS', 'window_height', 960);
+    ini_write_real('SETTINGS', 'window_position_x', display_get_width()/2);
+    ini_write_real('SETTINGS', 'window_position_y', display_get_height()/2);
+}
+
 //Game speed
-global.gamespeed = 1.0;
+global.gamespeed    = ini_read_real('SETTINGS', 'game_speed', 1.0);
 //Scale of objects' images
-global.scale = 4;
+global.scale        = ini_read_real('SETTINGS', 'scale', 4.0);
 //Scale of GUI elements
-global.scale_gui = 4;
+global.scale_gui    = ini_read_real('SETTINGS', 'scale_gui', 4.0);
+//Set window size
+window_width        = ini_read_real('SETTINGS', 'window_width', 1280);
+window_height       = ini_read_real('SETTINGS', 'window_height', 960);
+window_set_size(window_width, 
+                window_height);
+//Set window position
+window_position_x   = ini_read_real('SETTINGS', 'window_position_x', display_get_width()/2);
+window_position_y   = ini_read_real('SETTINGS', 'window_position_y', display_get_height()/2);
+window_set_position(window_position_x, 
+                    window_position_y);
+//Set min window width
+window_set_min_width(640);
+//Set min window height
+window_set_min_height(480);
 //Ingame state
 global.ingame = false;
 //Pause state
-global.pause = false;
+global.pause = true;
+
+ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Window properties refreshing
+
+window_width = window_get_width();
+window_height = window_get_height();
+window_position_x = window_get_x();
+window_position_y = window_get_y();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Refresh ini file
+
+ini_open('game_settings.ini');
+
+ini_write_real('SETTINGS', 'game_speed', global.gamespeed);
+ini_write_real('SETTINGS', 'scale', global.scale);
+ini_write_real('SETTINGS', 'scale_gui', global.scale_gui);
+ini_write_real('SETTINGS', 'window_width', window_width);
+ini_write_real('SETTINGS', 'window_height', window_height);
+ini_write_real('SETTINGS', 'window_position_x', window_position_x);
+ini_write_real('SETTINGS', 'window_position_y', window_position_y);
+
+ini_close();
 </string>
           </argument>
         </arguments>

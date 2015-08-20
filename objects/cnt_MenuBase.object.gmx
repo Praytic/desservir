@@ -194,11 +194,11 @@ var_h = ds_grid_height(buttons);
 var_w = ds_grid_width(buttons);
 
 //Button size
-button_h = sprite_get_height(spr_Start) * global.scale / 3;
-button_w = sprite_get_width(spr_Start) * global.scale / 3;
+button_h = sprite_get_height(spr_Start) * global.scale_gui / 3;
+button_w = sprite_get_width(spr_Start) * global.scale_gui / 3;
 
 //Interval berween edges
-interval = 10 * global.scale;
+interval = 10 * global.scale_gui;
 
 //Summary height and width of the menu
 sum_h = (button_h + interval) * (var_h);
@@ -275,8 +275,8 @@ draw_background_stretched(spr_Black, 0, 0, window_get_width(), window_get_height
 draw_sprite_ext(spr_GameTitle, 0, 
                 cell_x + interval_w * pos_game_title_x, 
                 cell_y - interval_h, 
-                global.scale / 3, 
-                global.scale / 3, 
+                global.scale_gui / 3, 
+                global.scale_gui / 3, 
                 0, c_white, 1);
 </string>
           </argument>
@@ -305,8 +305,8 @@ if (ds_grid_get(buttons, pos_start_x, pos_start_y) == 2) {
                     cur_x == pos_start_x &amp;&amp; cur_y == pos_start_y, 
                     cell_x + interval_w * pos_start_x, 
                     cell_y + interval_h * pos_start_y, 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -336,8 +336,8 @@ if (ds_grid_get(buttons, pos_options_x, pos_options_y) == 2) {
                     cur_x == pos_start_x &amp;&amp; cur_y == pos_options_y, 
                     cell_x + interval_w * pos_options_x, 
                     cell_y + interval_h * pos_options_y, 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -367,8 +367,8 @@ if (ds_grid_get(buttons, pos_exit_x, pos_exit_y) == 2) {
                     cur_x == pos_exit_x &amp;&amp; cur_y == pos_exit_y, 
                     cell_x + interval_w * pos_exit_x, 
                     cell_y + interval_h * pos_exit_y, 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -398,8 +398,8 @@ if (ds_grid_get(buttons, pos_continue_x, pos_continue_y) == 2) {
                     cur_x == pos_continue_x &amp;&amp; cur_y == pos_continue_y, 
                     cell_x + interval_w * pos_continue_x, 
                     cell_y + interval_h * pos_continue_y, 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -429,8 +429,8 @@ if (ds_grid_get(buttons, pos_new_game_x, pos_new_game_y) == 2) {
                     cur_x == pos_new_game_x &amp;&amp; cur_y == pos_new_game_y, 
                     cell_x + interval_w * pos_new_game_x, 
                     cell_y + interval_h * pos_new_game_y, 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -460,8 +460,8 @@ if (ds_grid_get(buttons, pos_gameplay_x, pos_gameplay_y) == 2) {
                     cur_x == pos_gameplay_x &amp;&amp; cur_y == pos_gameplay_y, 
                     cell_x + interval_w * pos_gameplay_x, 
                     cell_y + interval_h * (pos_gameplay_y - 0.5), 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -491,8 +491,8 @@ if (ds_grid_get(buttons, pos_control_x, pos_control_y) == 2) {
                     cur_x == pos_control_x &amp;&amp; cur_y == pos_control_y, 
                     cell_x + interval_w * pos_control_x, 
                     cell_y + interval_h * (pos_control_y - 0.5), 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -522,8 +522,8 @@ if (ds_grid_get(buttons, pos_graphics_x, pos_graphics_y) == 2) {
                     cur_x == pos_graphics_x &amp;&amp; cur_y == pos_graphics_y, 
                     cell_x + interval_w * pos_graphics_x, 
                     cell_y + interval_h * (pos_graphics_y - 0.5), 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
@@ -553,8 +553,8 @@ if (ds_grid_get(buttons, pos_sound_x, pos_sound_y) == 2) {
                     cur_x == pos_sound_x &amp;&amp; cur_y == pos_sound_y, 
                     cell_x + interval_w * pos_sound_x, 
                     cell_y + interval_h * (pos_sound_y - 0.5), 
-                    global.scale / 3, 
-                    global.scale / 3, 
+                    global.scale_gui / 3, 
+                    global.scale_gui / 3, 
                     0, c_white, 1);
 }
 </string>
