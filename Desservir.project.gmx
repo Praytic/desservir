@@ -63,6 +63,7 @@
         <sprite>sprites\spr_HUDBase</sprite>
         <sprite>sprites\spr_Skills</sprite>
         <sprite>sprites\spr_Elements</sprite>
+        <sprite>sprites\spr_HeroPanelButton</sprite>
       </sprites>
       <sprites name="Menu">
         <sprite>sprites\spr_GameTitle</sprite>
@@ -102,7 +103,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Menu">
-      <script>scripts\scr_RestoreButtonsGrid.gml</script>
+      <script>scripts\scr_RestoreGrid.gml</script>
       <script>scripts\scr_Continue.gml</script>
       <script>scripts\scr_Exit.gml</script>
       <script>scripts\scr_NewGame.gml</script>
@@ -115,12 +116,9 @@
       <script>scripts\scr_StatsUp.gml</script>
       <script>scripts\scr_SubbendingChoose.gml</script>
     </scripts>
-    <scripts name="System">
-      <script>scripts\scr_WindowSizeChanged.gml</script>
-    </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\fnt_Anon</font>
+    <font>fonts\fnt_RPGSystem</font>
   </fonts>
   <objects name="objects">
     <object>objects\init</object>
@@ -164,13 +162,15 @@
     </objects>
     <objects name="GUI">
       <objects name="HUD">
-        <object>objects\cnt_HUDBase</object>
-        <object>objects\cnt_Elements</object>
-        <object>objects\cnt_Skills</object>
+        <object>objects\cnt_HUD</object>
+        <object>objects\cnt_HeroPanelButton</object>
         <object>objects\cnt_HealthIndicator</object>
+        <object>objects\cnt_ManaIndicator</object>
+        <object>objects\cnt_HUDBase</object>
       </objects>
       <objects name="Menu">
         <object>objects\cnt_MenuBase</object>
+        <object>objects\cnt_HeroPanel</object>
       </objects>
     </objects>
   </objects>
