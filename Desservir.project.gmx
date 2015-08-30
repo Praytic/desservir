@@ -80,6 +80,8 @@
         <sprite>sprites\spr_NewGame</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\Working</sprite>
+    <sprite>sprites\Standing</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="Environment">
@@ -102,39 +104,164 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="Menu">
-      <script>scripts\scr_RestoreGrid.gml</script>
-      <script>scripts\scr_Continue.gml</script>
-      <script>scripts\scr_Exit.gml</script>
-      <script>scripts\scr_NewGame.gml</script>
-      <script>scripts\scr_StartInit.gml</script>
-    </scripts>
-    <scripts name="Hero">
-      <script>scripts\scr_StatsRefresh.gml</script>
+    <script>scripts\scr_GlobalState_Create.gml</script>
+    <script>scripts\scr_GameState_Create.gml</script>
+    <scripts name="Player">
       <script>scripts\scr_LevelUp.gml</script>
-      <script>scripts\scr_LevelUpCheck.gml</script>
       <script>scripts\scr_StatsUp.gml</script>
+      <script>scripts\scr_LevelUpCheck.gml</script>
+      <script>scripts\scr_StatsRefresh.gml</script>
+      <script>scripts\scr_HeroState_Create.gml</script>
+      <script>scripts\scr_Hero_Create.gml</script>
+      <script>scripts\scr_DepthCorrection.gml</script>
+      <script>scripts\scr_StandAnimatrion.gml</script>
+      <script>scripts\scr_WalkAnimations.gml</script>
+      <script>scripts\scr_HeroMovement.gml</script>
+    </scripts>
+    <scripts name="Game">
+      <script>scripts\scr_Hotkeys.gml</script>
+      <script>scripts\scr_SettingsLoading.gml</script>
+      <script>scripts\scr_CreateSettings.gml</script>
+      <script>scripts\scr_ViewScaling.gml</script>
+      <script>scripts\scr_WindowVarsRefreshing.gml</script>
+      <script>scripts\scr_GameFocus.gml</script>
+      <script>scripts\scr_GameStart.gml</script>
+      <script>scripts\scr_GameEnd.gml</script>
+      <script>scripts\scr_SaveSettings.gml</script>
+    </scripts>
+    <scripts name="GUI">
+      <scripts name="Menu">
+        <script>scripts\scr_RestoreMenuGrid.gml</script>
+        <script>scripts\scr_MenuBase_RefreshProps.gml</script>
+        <script>scripts\scr_MenuBase_Moving.gml</script>
+        <script>scripts\scr_MenuBase_Create.gml</script>
+        <script>scripts\scr_MenuBase_BackgroundDraw.gml</script>
+        <script>scripts\scr_ButtonsState_Draw.gml</script>
+        <script>scripts\scr_ButtonsState_Create.gml</script>
+        <scripts name="Buttons">
+          <script>scripts\scr_Exit.gml</script>
+          <script>scripts\scr_NewGame.gml</script>
+          <script>scripts\scr_Continue.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="HUDState">
+        <script>scripts\scr_HUDState_Create.gml</script>
+        <scripts name="HUD">
+          <script>scripts\scr_HUD_Create.gml</script>
+          <script>scripts\scr_HUD_Draw.gml</script>
+        </scripts>
+        <scripts name="HeroPanelButton">
+          <script>scripts\scr_HeroPanelButton_Draw.gml</script>
+          <script>scripts\scr_HeroPanelButton_Create.gml</script>
+          <script>scripts\scr_HeroPanelButton_RefreshProps.gml</script>
+        </scripts>
+        <scripts name="ManaIndicator">
+          <script>scripts\scr_ManaIndicator_RefreshProps.gml</script>
+          <script>scripts\scr_ManaIndicator_Create.gml</script>
+          <script>scripts\scr_ManaIndicator_Draw.gml</script>
+        </scripts>
+        <scripts name="HealthIndicator">
+          <script>scripts\scr_HealthIndicator_Draw.gml</script>
+          <script>scripts\scr_HealthIndicator_RefreshProps.gml</script>
+          <script>scripts\scr_HealthIndicator_Create.gml</script>
+        </scripts>
+      </scripts>
+      <script>scripts\scr_MenuState_Create.gml</script>
+    </scripts>
+    <scripts name="Elements">
       <script>scripts\scr_SubbendingChoose.gml</script>
+      <script>scripts\src_RestoreElementGrid.gml</script>
+    </scripts>
+    <scripts name="Entities">
+      <script>scripts\scr_CreateEntity.gml</script>
+    </scripts>
+    <scripts name="Rooms">
+      <script>scripts\scr_Teleporter_Create.gml</script>
+      <script>scripts\scr_Teleporter_Entering.gml</script>
+    </scripts>
+    <scripts name="Items">
+      <script>scripts\scr_ItemsState_Create.gml</script>
+    </scripts>
+    <scripts name="NPCs">
+      <script>scripts\scr_NPC_Create.gml</script>
+    </scripts>
+    <scripts name="Achievments">
+      <script>scripts\scr_AchievmentsCreate.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_RPGSystem</font>
   </fonts>
   <objects name="objects">
-    <object>objects\init</object>
-    <objects name="Party">
-      <object>objects\obj_Hero</object>
-    </objects>
-    <objects name="Nature">
-      <object>objects\obj_Flower</object>
-      <object>objects\obj_Tree</object>
-    </objects>
-    <objects name="System">
-      <object>objects\cnt_RoomState</object>
-      <object>objects\cnt_GameState</object>
-      <objects name="Window">
-        <object>objects\obj_WindowBase</object>
+    <object>objects\cnt_GlobalState</object>
+    <object>objects\cnt_GameState</object>
+    <object>objects\cnt_ElementsState</object>
+    <object>objects\cnt_GUIState</object>
+    <object>objects\cnt_PlayerState</object>
+    <object>objects\cnt_EntitiesState</object>
+    <object>objects\cnt_RoomsState</object>
+    <objects name="Player">
+      <object>objects\cnt_HeroState</object>
+      <objects name="HeroState">
+        <objects name="Hero">
+          <object>objects\obj_Hero</object>
+        </objects>
       </objects>
+    </objects>
+    <objects name="Entites">
+      <objects name="Undestructible">
+        <objects name="Impassible">
+          <object>objects\obj_Tree</object>
+        </objects>
+        <objects name="Passible">
+          <object>objects\obj_Flower</object>
+        </objects>
+      </objects>
+    </objects>
+    <objects name="NPC">
+      <object>objects\cnt_NPCState</object>
+      <objects name="Spawn">
+        <object>objects\cnt_SpawnBase</object>
+      </objects>
+      <objects name="Enemy">
+        <object>objects\cnt_EnemyBase</object>
+      </objects>
+      <objects name="Ally">
+        <object>objects\cnt_AllyBase</object>
+      </objects>
+      <objects name="Neutral">
+        <object>objects\cnt_NeutralBase</object>
+      </objects>
+    </objects>
+    <objects name="Game">
+      <object>objects\cnt_VictoryConditions</object>
+      <object>objects\cnt_DefeatConditions</object>
+      <object>objects\cnt_GameEnd</object>
+      <object>objects\cnt_GameStart</object>
+      <object>objects\cnt_GameSettings</object>
+      <object>objects\cnt_Hotkeys</object>
+    </objects>
+    <objects name="GUI">
+      <object>objects\cnt_MenuState</object>
+      <object>objects\cnt_HUDState</object>
+      <object>objects\cnt_HintsState</object>
+      <object>objects\cnt_ItemsPanelState</object>
+      <object>objects\cnt_MinimapState</object>
+      <object>objects\cnt_HeroPanelState</object>
+      <objects name="HUD">
+        <object>objects\cnt_HUD</object>
+        <object>objects\cnt_HeroPanelButton</object>
+        <object>objects\cnt_HealthIndicator</object>
+        <object>objects\cnt_ManaIndicator</object>
+        <object>objects\cnt_HUDBase</object>
+      </objects>
+      <objects name="Menu">
+        <object>objects\cnt_GameTitle</object>
+        <object>objects\cnt_ButtonsState</object>
+        <object>objects\cnt_MenuBase</object>
+      </objects>
+    </objects>
+    <objects name="Rooms">
       <objects name="Teleporter">
         <object>objects\cnt_TeleporterUp</object>
         <object>objects\cnt_TeleporterDown</object>
@@ -147,40 +274,39 @@
         <object>objects\cnt_Collision</object>
         <object>objects\cnt_Walkable</object>
       </objects>
-      <objects name="Player">
-        <object>objects\cnt_PlayerBase</object>
+    </objects>
+    <objects name="Items">
+      <object>objects\cnt_ItemsState</object>
+      <objects name="Items">
+        <object>objects\cnt_ItemBase</object>
+      </objects>
+      <objects name="Sets">
+        <object>objects\cnt_SetBase</object>
+      </objects>
+      <objects name="Consumables">
+        <object>objects\cnt_ConsumableBase</object>
       </objects>
     </objects>
-    <objects name="NPC">
-      <object>objects\obj_Spider</object>
-      <object>objects\base_Middle</object>
-    </objects>
-    <objects name="Quests">
-      <objects name="TEST Quest">
-        <object>objects\obj_Gold</object>
+    <objects name="Achievments">
+      <object>objects\cnt_AchievmentsState</object>
+      <objects name="Repeatable">
+        <object>objects\cnt_RepeatableBase</object>
       </objects>
-    </objects>
-    <objects name="GUI">
-      <objects name="HUD">
-        <object>objects\cnt_HUD</object>
-        <object>objects\cnt_HeroPanelButton</object>
-        <object>objects\cnt_HealthIndicator</object>
-        <object>objects\cnt_ManaIndicator</object>
-        <object>objects\cnt_HUDBase</object>
-      </objects>
-      <objects name="Menu">
-        <object>objects\cnt_MenuBase</object>
-        <object>objects\cnt_HeroPanel</object>
+      <objects name="Disposable">
+        <object>objects\cnt_DisposableBase</object>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_MainMenu</room>
+    <rooms name="SystemRooms">
+      <room>rooms\rm_MainMenu</room>
+    </rooms>
     <room>rooms\rm_StartRoom</room>
-    <room>rooms\rm_Room_001</room>
-    <room>rooms\rm_Room_002</room>
-    <room>rooms\rm_Room_003</room>
-    <room>rooms\rm_test_textboxes</room>
+    <rooms name="EasyRooms">
+      <room>rooms\rm_Room_001</room>
+      <room>rooms\rm_Room_002</room>
+      <room>rooms\rm_Room_003</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

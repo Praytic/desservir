@@ -1,2 +1,1 @@
-ini_close();
-game_end();
+scr_GameEnd();

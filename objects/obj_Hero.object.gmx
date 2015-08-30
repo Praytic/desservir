@@ -11,26 +11,41 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>image_speed = 0.1;
-action = false;
-stepsMade = 0;
-cur_depth = 0;
-prev_depth = 0;
-</string>
+            <kind>9</kind>
+            <script>scr_Hero_Create</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -72,118 +87,81 @@ prev_depth = 0;
       </action>
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>///Depth Correction
-depth = phy_position_y * -1
-if (cur_depth != - 100)
-    prev_depth = cur_depth;
-if (cur_depth == -100 &amp;&amp; prev_depth == 0) {
-    depth *= -1;
-}
-    
-</string>
+            <kind>9</kind>
+            <script>scr_DepthCorrection</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>///Handle Input Logic
-
-cell_x = round(x / 16);
-cell_y = round(y / 16);
-
-cur_depth   = ds_grid_get(cnt_RoomState.room_grid, cell_x, cell_y);
-right_depth = ds_grid_get(cnt_RoomState.room_grid, cell_x + 1, cell_y);
-left_depth  = ds_grid_get(cnt_RoomState.room_grid, cell_x - 1, cell_y);
-up_depth    = ds_grid_get(cnt_RoomState.room_grid, cell_x, cell_y - 1);
-down_depth  = ds_grid_get(cnt_RoomState.room_grid, cell_x, cell_y + 1);
-
-if(keyboard_check(vk_left)){
-    sprite_index = spr_Hero_Left;
-    if (abs(cur_depth - left_depth) &lt;= 1 || 
-        left_depth == -100 ||
-        left_depth == prev_depth) {
-        phy_position_x -= 1;
-    }
-    stepsMade++;
-}
-if(keyboard_check(vk_right)){
-    sprite_index = spr_Hero_Right;
-    if (abs(cur_depth - right_depth) &lt;= 1 || 
-        right_depth == -100 ||
-        right_depth == prev_depth) {
-        phy_position_x += 1;
-    }
-    stepsMade++;
-}
-if(keyboard_check(vk_up)){
-    sprite_index = spr_Hero_Up;
-    if (abs(cur_depth - up_depth) &lt;= 1 || 
-        up_depth == -100 ||
-        up_depth == prev_depth) {
-        phy_position_y -= 1;
-    }
-    stepsMade++;
-}
-if(keyboard_check(vk_down)){
-    sprite_index = spr_Hero_Down;
-    if (abs(cur_depth - down_depth) &lt;= 1 || 
-        down_depth == -100 ||
-        down_depth == prev_depth) {
-        phy_position_y += 1;
-    }
-    stepsMade++;
-}
-
-//Stand animation
-if(keyboard_check_released(vk_left)){
-    sprite_index = spr_Hero_LeftStand;
-}
-if(keyboard_check_released(vk_right)){
-    sprite_index = spr_Hero_RightStand;
-}
-if(keyboard_check_released(vk_up)){
-    sprite_index = spr_Hero_UpStand;
-}
-if(keyboard_check_released(vk_down)){
-    sprite_index = spr_Hero_DownStand;
-}
-
-if(keyboard_check(ord("E"))) {
-    action = true;
-}
-else {
-    action = false;
-}
-
-</string>
+            <kind>9</kind>
+            <script>scr_HeroMovement</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -200,71 +178,6 @@ else {
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(keyboard_check_pressed(ord("Q"))) {
-    show_debug_message("cell: " + string(cell_x) + " " + string(cell_y));
-    show_debug_message("-------");
-    for(i = 0; i &lt; 5; i++;) {
-        show_debug_message(string(ds_grid_get(cnt_RoomState.room_grid, cell_x - 2, cell_y - 2 + i)) + " " +
-                           string(ds_grid_get(cnt_RoomState.room_grid, cell_x - 1, cell_y - 2 + i)) + " " +
-                           string(ds_grid_get(cnt_RoomState.room_grid, cell_x - 0, cell_y - 2 + i)) + " " +
-                           string(ds_grid_get(cnt_RoomState.room_grid, cell_x + 1, cell_y - 2 + i)) + " " +
-                           string(ds_grid_get(cnt_RoomState.room_grid, cell_x + 2, cell_y - 2 + i)));
-    }
-    show_debug_message("-------");
-    show_debug_message(string(cur_depth) + " " + string(prev_depth));
-}
-
-if(keyboard_check(ord("W"))) {
-    cnt_PlayerBase.cur_hp--;
-    show_debug_message("cur_hp: " + string(cnt_PlayerBase.cur_hp));
-}
-if(keyboard_check(ord("E"))) {
-    cnt_PlayerBase.cur_hp++;
-    show_debug_message("cur_hp: " + string(cnt_PlayerBase.cur_hp));
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="base_Middle">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collide With
-</string>
-          </argument>
-        </arguments>
       </action>
     </event>
     <event eventtype="4" ename="cnt_Collision">
@@ -308,34 +221,6 @@ if(keyboard_check(ord("E"))) {
           <argument>
             <kind>1</kind>
             <string>///Collide With
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///AoE
-draw_self();
-draw_circle(x, y - 16, 32, 3);
-draw_set_halign(fa_center);
-draw_text_ext_transformed(x, y - 32, string(x) + ", " + string(y), 10, 300, 0.5, 0.5, 0);
-draw_text_ext_transformed(x, y - 48, string(stepsMade), 10, 300, 0.5, 0.5, 0);
 </string>
           </argument>
         </arguments>
